@@ -84,6 +84,11 @@ $ react-native link react-native-puti-pay
      {
        return [RCTLinkingManager application:application openURL:url options:options];
      }
+
+     - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+  return [RCTLinkingManager application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
+}
+
    ```
 
 #### Android
@@ -122,7 +127,8 @@ $ react-native link react-native-puti-pay
       import XPay from 'react-native-puti-pay'
 
         //设置微信ID
-        XPay.setWxId(id)
+        // XPay.setWxId(id)
+        Xpay.setWxId(id,universalLink)
         //设置    支付宝URL Schemes
         XPay.setAlipayScheme(scheme)
         //支付宝开启沙箱模式 仅限安卓
