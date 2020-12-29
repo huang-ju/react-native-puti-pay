@@ -92,7 +92,7 @@ RCT_EXPORT_METHOD(wxPay:(NSDictionary *)params  callback:(RCTResponseSenderBlock
     req.sign = params[@"sign"];
     //发送请求到微信，等待微信返回onResp
     dispatch_async(dispatch_get_main_queue(), ^{
-        [WXApi sendReq:req completion:nil]
+        [WXApi sendReq:req completion:nil];
     });
     wxCallBack = callback;
 }
