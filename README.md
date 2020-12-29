@@ -46,29 +46,9 @@ $ react-native link react-native-puti-pay
 ### Config
 
 #### iOS
+1. 需要先配置Universal Links
 
-1. (使用pod管理则不需要这一步)TARGET -> Build Phases -> Linked Binary With Libraries 添加以下系统库
-![image](https://github.com/puti94/react-native-puti-pay/blob/master/screenshot/WX20171125-142402.png)
-
-2. 在项目中的info.plist中加入应用白名单，右键info.plist选择source code打开(plist具体设置在Build Setting -> Packaging -> Info.plist File可获取plist路径) :
-
-   ```
-   <key>LSApplicationQueriesSchemes</key>
-   <array>
-       <!-- 支付宝 URL Scheme 白名单-->
-       <string>alipay</string>
-       <!-- 微信 URL Scheme 白名单-->
-       <string>wechat</string>
-       <string>weixin</string>
-   
-   </array>
-   ```
-
-3. 设置 URL Scheme URL Scheme是通过系统找到并跳转对应app的设置，通过向项目中的info.plist文件中加入URL types可使用第三方平台所注册的appkey信息向系统注册你的app，当跳转到第三方应用支付后，可直接跳转回你的app。微信填写微信ID,支付宝也建议添加ap+加支付宝应用id的形式以免冲突。
-
-   ![image](https://github.com/puti94/react-native-puti-pay/blob/master/screenshot/WX20171125-142504.png)
-
-4. 在入口文件AppDelegate.m下设置回调
+2. 在入口文件AppDelegate.m下设置回调
 
    ```
    
@@ -86,8 +66,8 @@ $ react-native link react-native-puti-pay
      }
 
      - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
-  return [RCTLinkingManager application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
-}
+      return [RCTLinkingManager application:application continueUserActivity:userActivity            restorationHandler:restorationHandler];
+     }
 
    ```
 
@@ -123,7 +103,7 @@ $ react-native link react-native-puti-pay
 
 ## Usage
 
-```javascript
+```  
       import XPay from 'react-native-puti-pay'
 
         //设置微信ID
