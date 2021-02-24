@@ -20,7 +20,7 @@ export default class XPay {
    * 设置微信APPID
    * @param id
    */
-  static setWxId(id) {
+  static setWxId(id,universalLink) {
     if (Platform.OS === 'ios') {
       NativeModules.PutiPay.setWxId(id, universalLink)
     } else {
